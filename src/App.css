@@ -18,7 +18,7 @@ body::-webkit-scrollbar {
   border-radius: 20px;
 }
 
-/* Navbar......................... */
+/* Navbar.*/
 .navlinks {
   padding-bottom: 8px;
 }
@@ -36,7 +36,7 @@ body::-webkit-scrollbar {
   transition: none;
 }
 
-/* ..................1st Page=> Create FlashCard  ........................... */
+/* 1st Page=> Create FlashCard  . */
 
 .error {
   color: red;
@@ -58,9 +58,8 @@ label {
   margin-bottom: 4px;
 }
 
-/* .................................................  */
 
-/* ////////////////////////   2nd Page=> MyFlashCard //////////////////////////// */
+/*    2nd Page=> MyFlashCard  */
 
 .childCards:hover>.del {
   display: block;
@@ -72,7 +71,7 @@ label {
   border-radius: 5px;
 }
 
-/* /////////////       3rd Page => FlashCardDetails Page /////////////// */
+/*     3rd Page => FlashCardDetails Page  */
 
 .shareBtns {
   display: flex;
@@ -102,7 +101,7 @@ label {
   margin: 0px 10px;
 }
 
-/* ..................................................................... */
+/* .............. */
 .modalDiv {
   z-index: 9;
   background: #363736be;
@@ -115,7 +114,7 @@ label {
   z-index: 50;
 }
 
-/* ..................................................................... */
+/* .... */
 
 /* CSS FOR RESPONSIVENESS STARTED */
 
