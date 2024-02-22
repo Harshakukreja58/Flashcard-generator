@@ -12,6 +12,7 @@ import { MdOutlineUploadFile } from "react-icons/md";
 import { MdOutlineDelete } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
+import { IoIosClose } from "react-icons/io";
 
 
 const createFlashCard = () => {
@@ -223,7 +224,7 @@ const createFlashCard = () => {
                                   src={term.termImage}
                                   alt=""
                                 />
-                                <GiCrossMark
+                                <IoIosClose
                                   className="mr-5 text-lg cursor-pointer hover:text-red-600"
                                   onClick={() =>
                                     setFieldValue(`term.${index}.termImage`, "")
