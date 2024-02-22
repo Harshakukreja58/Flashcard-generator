@@ -15,8 +15,8 @@ import { IoMdClose } from "react-icons/io";
 import { IoIosClose } from "react-icons/io";
 
 
-const createFlashCard = () => {
-  const dispatch = useDispatch();
+const CreateFlashCard = () => {
+  const Dispatch = useDispatch();
 
   // Access form data from Redux store
   const formData = useSelector((state) => state.flashcard.formData);
@@ -339,4 +339,4 @@ const createFlashCard = () => {
   );
 };
 
-export default createFlashCard;
+export default CreateFlashCard;
