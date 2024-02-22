@@ -31,7 +31,7 @@ const CreateFlashCard = () => {
     });
   };
   const submitForm = (values) => {
-    dispatch(addFlashCard(values));
+    Dispatch(addFlashCard(values));
     toast.success("FlashCard Created Successfully", {
       theme: "colored",
       pauseOnFocusLoss: false,
