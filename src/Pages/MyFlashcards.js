@@ -50,7 +50,7 @@ const MyFlashcards = () => {
         </div>
         <div
           name="displayFlashcardDiv"
-          className="Flex flex-wrap m-auto overflow-hidden"
+          className="Flex flex-wrap m-auto overflow-hidden m-5 p-5"
         >
           {flashCardData.length !== 0 ? (
             flashCardData.slice(0, ShowCard).map((elem, index) => (
