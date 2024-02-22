@@ -1,14 +1,18 @@
+//imported dependencies and features
 import { ErrorMessage, Field, FieldArray, Form, Formik } from "formik";
 import React from "react";
 import { ToastContainer, toast } from "react-toastify";
 import validationSchema from "../validations/validationSchema";
 import validateImage from "../validations/validateImage";
-import { useDispatch, useSelector } from "react-redux";
-import { MdOutlineUploadFile } from "react-icons/md";
-import { RiDeleteBin6Line } from "react-icons/ri";
-import { BiEdit } from "react-icons/bi";
-import { GiCrossMark } from "react-icons/gi";
 import { addFlashCard } from "../redux/flashcardSlice";
+import { useDispatch, useSelector } from "react-redux";
+
+// react icons
+import { MdOutlineUploadFile } from "react-icons/md";
+import { MdOutlineDelete } from "react-icons/md";
+import { CiEdit } from "react-icons/ci";
+import { IoMdClose } from "react-icons/io";
+
 
 const createFlashCard = () => {
   const dispatch = useDispatch();
@@ -21,7 +25,7 @@ const createFlashCard = () => {
       termDefinition: "",
       termImage: "",
     });
-    toast.info("Term Card Added !", {
+    toast.info("Term Card Added", {
       pauseOnFocusLoss: false,
     });
   };
@@ -52,7 +56,7 @@ const createFlashCard = () => {
               className="bg-white w-[100%] h-[30%] p-[15px] flex flex-col text-left pl-[25px] commonBorder"
               name="createGroupDiv"
             >
-              {/* It's a input field for create a group name */}
+              {/* input field to create group name */}
               <div className="flex flex-col md:flex-row ">
                 <div className="flex flex-col">
                   <label htmlFor="groupName"> Create Group*</label>
@@ -64,7 +68,7 @@ const createFlashCard = () => {
                     className="w-full md:w-96"
                   ></Field>
 
-                  {/* Its a component to show error message for validation */}
+                  {/*  component to show error message for validation */}
                   <ErrorMessage name="groupName">
                     {(emsg) => <div className="error ">{emsg}</div>}
                   </ErrorMessage>
@@ -79,8 +83,8 @@ const createFlashCard = () => {
                         alt=""
                       />
 
-                      {/* its an image upload button */}
-                      <GiCrossMark
+                      {/*  image upload button */}
+                      <IoMdClose
                         name="groupImgDelIcon"
                         className="mt-[10px] -ml-[20px] text-gray-400 hover:text-red-600 hover:text-xl hover:cursor-pointer "
                         onClick={() => setFieldValue("groupImage", null)} //selecting same image
@@ -97,7 +101,7 @@ const createFlashCard = () => {
                       </span>
                     </label>
                   )}
-                  {/* Its an input field for Image upload */}
+                  {/* input field for Image upload */}
                   <input
                     className="hidden "
                     name="groupImage"
@@ -111,12 +115,12 @@ const createFlashCard = () => {
                         event.target.files[0] &&
                         !validateImage.includes(event.target.files[0].type)
                       ) {
-                        toast.warning("Please Upload in Image Format !", {
+                        toast.warning("Please Upload in PNG, JPG, JPEG and SVG Format only !", {
                           pauseOnFocusLoss: false,
                         });
-                      } else if (event.target.files[0].size > 304800) {
+                      } else if (event.target.files[0].size > 512000) {
                         toast.warning(
-                          "Image size is very Large ! Please Select Image size less than 300kb",
+                          "Image size is very Large ! Please Select Image size less than 500kb",
                           {
                             pauseOnFocusLoss: false,
                           }
@@ -134,23 +138,23 @@ const createFlashCard = () => {
                 </div>
               </div>
               <div className="flex flex-col" name="groupDescriptionDiv">
-                {/* Its an input field for Group Description */}
+                {/* input field for Group Description */}
                 <label htmlFor="groupDescription"> Add description</label>
                 <Field
                   as="textarea"
                   name="groupDescription"
                   id="groupDescription"
-                  placeholder="Group Description... "
+                  placeholder="Enter group description"
                   className="w-full md:w-[70%]  h-28 resize-none scrollbar-hide"
                 ></Field>
-                {/* Its a component to show error message for validation */}
+                {/*  component to show error message for validation */}
                 <ErrorMessage name="groupDescription">
                   {(emsg) => <div className="error ">{emsg}</div>}
                 </ErrorMessage>
               </div>
             </div>
 
-            {/* Termcard Div started from here */}
+            {/* Termcard Div started from below */}
             <div
               className=" w-[100%] mt-3 pt-1 bg-white commonBorder flex flex-col text-left pl-[25px] "
               name="createTermCardDiv"
@@ -170,7 +174,7 @@ const createFlashCard = () => {
                             {index + 1}
                           </div>
                           <div className="flex flex-col">
-                            {/*Its an input component for Termcard Name */}
+                            {/* input component for Termcard Name */}
                             <label htmlFor={`term.${index}.termName`}>
                               Enter Term*
                             </label>
@@ -184,7 +188,7 @@ const createFlashCard = () => {
                               type="text"
                               placeholder="Term Name"
                             ></Field>
-                            {/* Its a component to show error message for validation */}
+                            {/* component to show error message for validation */}
                             <ErrorMessage name={`term.${index}.termName`}>
                               {(emsg) => <div className="error ">{emsg}</div>}
                             </ErrorMessage>
@@ -203,9 +207,9 @@ const createFlashCard = () => {
                               onChange={handleChange}
                               onBlur={handleBlur}
                               type="text"
-                              placeholder="Term Definition..."
+                              placeholder="Enter term definition"
                             ></Field>
-                            {/* Its a component to show error message for validation */}
+                            {/*  component to show error message for validation */}
                             <ErrorMessage name={`term.${index}.termDefinition`}>
                               {(emsg) => <div className="error ">{emsg}</div>}
                             </ErrorMessage>
@@ -251,16 +255,16 @@ const createFlashCard = () => {
                                   )
                                 ) {
                                   toast.warning(
-                                    "Please Upload in Image Format !",
+                                    "Please Upload in Image PNG, JPG, JPEG and SVG format only!",
                                     {
                                       pauseOnFocusLoss: false,
                                     }
                                   );
                                 } else if (
-                                  event.target.files[0].size > 304800
+                                  event.target.files[0].size > 512000
                                 ) {
                                   toast.warning(
-                                    "Image size is very Large ! Please Select Image size less than 300kb",
+                                    "Image size is very Large, Please Select Image size less than 500kbs",
                                     {
                                       pauseOnFocusLoss: false,
                                     }
@@ -285,20 +289,20 @@ const createFlashCard = () => {
                             <div>
                               {/*Visible Delete btn in term if more than one */}
                               {values.term.length <= 1 ? null : (
-                                <RiDeleteBin6Line
+                                <MdOutlineDelete
                                   className="text-[1.8em]  text-gray-500 m-2 cursor-pointer hover:text-red-600"
                                   onClick={() => {
                                     moreTerm.remove(index);
-                                    toast.warn("Term Card Deleted !", {
+                                    toast.warn("Term Card Removed", {
                                       pauseOnFocusLoss: false,
                                     });
                                   }}
                                 />
                               )}
-                              {/* its an Edit button for edit a term  */}
+                              {/*  Edit button for edit a term  */}
                               {values.term.length <= 1 ? null : (
                                 <label htmlFor={`term.${index}.termName`}>
-                                  <BiEdit className="text-[1.8em] text-gray-500 m-2 cursor-pointer hover:text-yellow-600" />
+                                  <CiEdit className="text-[1.8em] text-gray-500 m-2 cursor-pointer hover:text-yellow-600" />
                                 </label>
                               )}
                             </div>
@@ -306,7 +310,7 @@ const createFlashCard = () => {
                         </div>
                       ))}
 
-                    {/* It's an Add More button for adding a new term */}
+                    {/*  Add More button for adding a new term */}
                     <div
                       className="inline-block mt-4 mb-6 font-bold text-blue-700 cursor-pointer mx-7"
                       onClick={() => addMoreTermS(values, moreTerm)}
